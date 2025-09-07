@@ -2,12 +2,14 @@ import express from 'express';
 import dotenv from 'dotenv'
 import connectDb from './database/db.js';
 import cookieParser from 'cookie-parser';
+import userRoutes from './routes/userRoutes.js'
 const app=express();
 
 dotenv.config();
 connectDb();
 app.use(express.json());
 app.use(cookieParser());
+app.use("/api/user",userRoutes);
 const port=process.env.PORT;
 app.get("/",(req,res)=>{
     res.send("Hello");
