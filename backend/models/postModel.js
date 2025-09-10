@@ -1,11 +1,6 @@
 import mongoose from 'mongoose';
 
 const postSchema=new mongoose.Schema({
-    title:{
-        type:String,
-        required:true,
-        trim:true
-    },
     post:{
         type:String,
         required:true,
@@ -41,7 +36,11 @@ const postSchema=new mongoose.Schema({
                 default:Date.now
             }
         }
-    ]
+    ],
+    mentions:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }]
 },{
     timestamps:true
 });
