@@ -1,6 +1,6 @@
 import express from 'express';
 import { followAndUnfollowUser, loginUser, logoutUser, myProfile, registerUser, userProfile } from '../controllers/userControllers.js';
-import { isAuth } from '../utils/isAuth.js';
+import { isAuth } from '../middlewares/isAuth.js';
 
 const router=express.Router();
 
