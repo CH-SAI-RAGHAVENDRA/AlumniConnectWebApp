@@ -8,7 +8,7 @@ export const authService = {
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
       }
-      console.log(response.status);
+      console.log(response);
       return response.data;
     } catch (error) {
       throw error.response?.data || { message: 'Login failed' };
@@ -22,7 +22,7 @@ export const authService = {
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
       }
-      console.log(response.status);
+      console.log(response);
       return response.data;
     } catch (error) {
       throw error.response?.data || { message: 'Registration failed' };

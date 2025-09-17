@@ -15,12 +15,11 @@ export const registerUser=TryCatch(async(req,res)=>{
         name,email,rollNumber,role,batch,password:hashPassword,department,currentEmploymentStatus
     });
     console.log(!user);
-    generateToken(user._id,res);
-    console.log(res);
+    const token = generateToken(user._id,res);
     res.status(200).json({
-        message:"Registered Successfully"
+        message:"Registered Successfully",
+        token : token
     });
-    console.log(res);
     return res;
 });
 
@@ -41,12 +40,12 @@ export const loginUser=TryCatch(async(req,res,next)=>{
             message:"Wrong Password, Please Try Again"
         });
     }
-    console.log(!user);
     const {password:pass,...rest}=user._doc;
-    generateToken(user._id,res);
+    const token = generateToken(user._id,res);
     res.status(200).json({
         user:rest,
-        message:"Login Successful"
+        message:"Login Successful",
+        token : token
     });
     console.log(res.status);
     return res;

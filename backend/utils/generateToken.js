@@ -9,6 +9,7 @@ const generateToken=(id,res)=>{
         httpOnly:true,
         sameSite:"strict"
     });
+    return token;
 }
 
 export default generateToken;
