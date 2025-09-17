@@ -9,15 +9,15 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    rollNumber: '',
-    role: 'student',
-    batch: '',
-    department: '',
-    password: '',
-    confirmPassword: '',
-    currentEmploymentStatus: ''
+    name: "",
+    email: "",
+    rollNumber: "",
+    role: "student",
+    batch: "",
+    password: "",
+    department: "",
+    confirmPassword: "",
+    currentEmploymentStatus: ""
   });
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
@@ -44,22 +44,18 @@ const Register = () => {
 
     setLoading(true);
     
-    // try {
-    //   const userData = { ...formData };
-    //   delete userData.confirmPassword;
+    try {
+      const userData = { ...formData };
+      delete userData.confirmPassword;
+      console.log(userData);
+      await register(userData);
+      toast.success('Registration successful!');
+    } catch (error) {
+      toast.error('Registration failed. Please try again.');
       
-    //   await register(userData);
-    //   toast.success('Registration successful!');
-    // } catch (error) {
-    //   toast.error('Registration failed. Please try again.');
-    //   navigate('/');
-    //   console.log("Im working");
-      
-    // } finally {
-    //   setLoading(false);
-    // }
-
-    navigate('/');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const departments = [

@@ -5,7 +5,12 @@ import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 import cloudinary from 'cloudinary';
+import cors from 'cors';
 const app=express();
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 
 dotenv.config();
 connectDb();

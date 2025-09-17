@@ -25,17 +25,16 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     
-    // try {
-    //   await login(formData);
-    //   toast.success('Login successful!');
-    // } catch (error) {
-    //   toast.error('Login failed. Please try again.');
-    // } finally {
-    //   setLoading(false);
-    // }
+    try {
+      await login(formData);
+      toast.success('Login successful!');
+      navigate('/');
+    } catch (error) {
+      toast.error('Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
 
-    
-    navigate('/');
   };
 
   return (

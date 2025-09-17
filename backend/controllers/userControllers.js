@@ -14,15 +14,20 @@ export const registerUser=TryCatch(async(req,res)=>{
     user=await User.create({
         name,email,rollNumber,role,batch,password:hashPassword,department,currentEmploymentStatus
     });
+    console.log(!user);
     generateToken(user._id,res);
+    console.log(res);
     res.status(200).json({
         message:"Registered Successfully"
     });
+    console.log(res);
+    return res;
 });
 
 export const loginUser=TryCatch(async(req,res,next)=>{
     const {email,password}=req.body;
     let user=await User.findOne({email});
+    console.log(req.body);
     if(!user)
     {
         return res.status(400).json({
@@ -36,12 +41,15 @@ export const loginUser=TryCatch(async(req,res,next)=>{
             message:"Wrong Password, Please Try Again"
         });
     }
+    console.log(!user);
     const {password:pass,...rest}=user._doc;
     generateToken(user._id,res);
     res.status(200).json({
         user:rest,
         message:"Login Successful"
     });
+    console.log(res.status);
+    return res;
 });
 
 export const myProfile=TryCatch(async(req,res)=>{
